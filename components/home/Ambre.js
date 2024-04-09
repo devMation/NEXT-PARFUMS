@@ -5,7 +5,6 @@
 // Je crée une fonction fléchée elle prend en paramètre ma props
 // mon fichier qui contient le tableau d'objet contenu dans ambreData
 
-import { alert } from "@material-tailwind/react";
 import "tailwindcss/tailwind.css";
 
 const Ambre = (props) => {
@@ -13,6 +12,20 @@ const Ambre = (props) => {
   // object.values
 
   console.log(Object.values(props));
+
+  const ImageHoverChange = () => {
+    const [isHovered, setIsHovered] = useState(false);
+  
+    // Fonction pour gérer le survol de l'image
+    const handleMouseEnter = () => {
+      setIsHovered(true);
+    };
+  
+    // Fonction pour gérer la fin du survol de l'image
+    const handleMouseLeave = () => {
+      setIsHovered(false);
+    }
+  }
 
   return (
     // retourner une valeur
@@ -31,21 +44,24 @@ const Ambre = (props) => {
 
           <div
             key={index}
-            className="border-2 border-black-600 w-80 m-2 h-80  font-medium "
+            className="border-2 border-black-600 w-80 m-2 h-80  font-medium border-2   "
           >
-            <img className="w-96 h-40 m-auto" src={item.src} />
+            <img className="w-96 h-40 m-auto  " src={item.src} />
             <h3 className=" text-base uppercase text-center  font-normal">
-              {item.title}{" "}
+              {item.title}
+              {""}
             </h3>
-            <p className=" text-base  font-normal">
+            <p className=" text-base font-normal">
               Detail : <br />
               {item.description}
             </p>
-            <p className=" fz-2 text-lg font-bold text-amber-300 traking-normal">
+            <p className=" fz-2 p-1 text-lg font-bold text-amber-300 traking-normal">
               {item.price}
             </p>
-            <div className="bg-amber-300 w-full mt-3 text-center h-">
-              <button>Ajoute au panier</button>
+            <div className=" w-full mt-4 text-center h-10 p-2 bg-amber-400">
+              <button  >
+                Ajoute au panier
+              </button>
             </div>
           </div>
         ))}
