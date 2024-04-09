@@ -7,6 +7,8 @@
 
 import "tailwindcss/tailwind.css";
 
+import Image from "next/image";
+
 const Ambre = (props) => {
   console.log("ici", typeof props, props);
   // object.values
@@ -20,7 +22,7 @@ const Ambre = (props) => {
       <h1 className="text-center mt-4 uppercase text-2xl font-semibold tracking-normal  ">
         Ambre كهرمان
       </h1>
-      <div id="ambre" className="grid grid-cols-2 place-items-center ">
+      <div id="ambre" className="flex flex-wrap place-items-center h-screen ">
         {Object.values(props).map((item, index) => (
           // Avec le .map() je vais boucler dans le tableau ambre contenu dans AmbreData.
           //item sa va chercher la valeur de mon tableau d'objet via un (.) pour aller la recuperer avec le parametre.
@@ -30,10 +32,13 @@ const Ambre = (props) => {
 
           <div
             key={index}
-            className=" my-3 brightness-100  border-2 border-black-600 w-80 m-2 h-80  font-medium border-2    shadow-lg shadow-slate-600  "
+            className="   position-relative my-3 font-medium w-[40%] mx-auto shadow-lg shadow-slate-600  "
           >
-            <img className="w-96 h-40 m-auto  " src={item.src} />
-            <h3 className=" text-base uppercase text-center  font-normal">
+            <div className="position-relative w-[100%] ">
+            {/* <img className="max-h-[30%]" src={item.src} /> */}
+            <Image src={item.src} className="object-content "   />
+            </div>
+            <h3 className=" text-base uppercase text-center font-normal">
               {item.title}
               {""}
             </h3>
